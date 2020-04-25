@@ -46,12 +46,19 @@ public class Product
 	{
 			
 	}
-	public Product(String name, int price, String description) {
+	
+	public Product(long id, String name, int price, String description) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.description = description;
 	}
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + "]";
+	}
+	
 	
 	
 

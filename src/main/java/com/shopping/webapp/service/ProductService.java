@@ -15,6 +15,7 @@ public class ProductService
 	private ProductRepository productRepository;
 	
 	
+	
 	public List<Product> getAllProducts()
 	{
 		
@@ -22,9 +23,22 @@ public class ProductService
 	}
 	
 	
+	
 	public Product getProductById(long id)
 	{
 		return productRepository.getOne(id);
+	}
+	
+	
+	public Product addProduct(Product product)
+	{
+		return productRepository.save(product);
+		
+	}
+	
+	public void deleteProduct(long id)
+	{
+		productRepository.deleteById(id);
 	}
 
 }
