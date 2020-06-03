@@ -1,5 +1,6 @@
 package com.shopping.webapp.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,11 +13,20 @@ public class Product
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "product_id")
 	private long id;
 	private String name;
 	private int price;
 	private String description;
+	private String imageUrl;
 	
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 	public long getId() {
 		return id;
 	}
@@ -46,17 +56,13 @@ public class Product
 	{
 			
 	}
-	
-	public Product(long id, String name, int price, String description) {
+	public Product(long id, String name, int price, String description, String imageUrl) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.description = description;
-	}
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + "]";
+		this.imageUrl = imageUrl;
 	}
 	
 	

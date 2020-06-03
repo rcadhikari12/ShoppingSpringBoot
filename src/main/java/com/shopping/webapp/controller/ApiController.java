@@ -28,6 +28,7 @@ public class ApiController
 		
 	}
 	
+	
 	@GetMapping("/getProduct/{id}")
 	public Product showProduct(@PathVariable("id") long id)
 	{
@@ -50,9 +51,5 @@ public class ApiController
 		
 	}
 	
-	
-	
-	
-	
-	
+
 }
