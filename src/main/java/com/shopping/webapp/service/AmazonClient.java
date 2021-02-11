@@ -46,9 +46,6 @@ public class AmazonClient
 		s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(creds)).withRegion("us-east-2").build();
 	}
 	
-
-	
-	
 	
 	private File convertMultiPartToFile(MultipartFile file) throws IOException {
 	    File convFile = new File(file.getOriginalFilename());
@@ -58,9 +55,11 @@ public class AmazonClient
 	    return convFile;
 	}
 	
+	
 	private String generateFileName(MultipartFile multiPart) {
 	    return new Date(0).getTime() + "-" + multiPart.getOriginalFilename().replace(" ", "_");
 	}
+	
 	
 	private void uploadFileTos3bucket(String fileName, File file) {
 	    s3client.putObject(new PutObjectRequest(bucketName, fileName, file)

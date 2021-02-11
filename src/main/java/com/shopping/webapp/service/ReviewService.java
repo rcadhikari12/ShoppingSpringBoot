@@ -1,6 +1,5 @@
 package com.shopping.webapp.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,24 +12,14 @@ import com.shopping.webapp.model.Product;
 import com.shopping.webapp.model.Review;
 
 @Service
-public class ReviewService 
+public class ReviewService
 {
+	
 	@Autowired
 	private ReviewRepository reviewRepository;
 	@Autowired
 	private ProductRepository productRepository;
 	
-	
-	public List<Review> getAllReviews(long productId)
-	{
-		List<Review> list = new ArrayList<Review>();	
-		for(Review x: reviewRepository.findAll())
-		{
-			list.add(x);	
-		}
-		return list;
-		
-	}
 	
 	public Review createReview(long productId, Review review)
 	{	
@@ -39,5 +28,15 @@ public class ReviewService
 		review.setProduct(product);
 		return reviewRepository.save(review);	
 	}
+	
+	
+	public List<Review> FetchReviews(long productId)
+	{
+		return reviewRepository.getReviews(productId);
+		
+	}
+	
+	
+	
 
 }

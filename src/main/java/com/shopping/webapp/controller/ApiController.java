@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shopping.webapp.model.Product;
 import com.shopping.webapp.service.ProductService;
 
-@RestController
+@RestController("/product")
 @CrossOrigin
 public class ApiController 
 {
@@ -50,6 +50,22 @@ public class ApiController
 		
 		
 	}
+	
+	@GetMapping("/searchProducts/{name}")
+	public List<Product> searchProductsByName(@PathVariable("name") String name)
+	{
+		return productService.searchProduct(name);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 }

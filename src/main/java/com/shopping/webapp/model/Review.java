@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.CreatedDate;
+
 @Entity
 public class Review 
 {
@@ -22,11 +24,17 @@ public class Review
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "review_id")
 	private int id;
+	
 	private String reviewerName;
+	
 	private int rating;
+	
+	@CreatedDate
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date date = new Date();
+	private Date date;
+	
 	private String topic;
+	
 	private String description;
 	
 	@ManyToOne(cascade= CascadeType.ALL)
@@ -37,6 +45,7 @@ public class Review
 	{
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -47,8 +56,7 @@ public class Review
 		this.reviewerName = reviewerName;
 	}
 	
-	
-	
+
 	public Product getProduct() {
 		return product;
 	}
